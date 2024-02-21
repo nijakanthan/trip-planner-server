@@ -1,8 +1,10 @@
 import express from 'express';
 
-const router: express.Router = express.Router();
+const app = express();
 
-router.get('/api/version', (req: express.Request, res: express.Response) => {
+const router = express.Router();
+
+router.get('/api/version', (req, res) => {
   console.log('/api/version');
   res.json({
     version: '0.0.1',

@@ -1,8 +1,8 @@
 import express from 'express'
-import router from './routes'
+import router from './routes/index.mjs'
 
 const app = express()
-const port = 3001
+const port = 8080
 
 app.use(router);
 
