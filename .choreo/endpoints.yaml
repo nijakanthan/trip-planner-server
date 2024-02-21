@@ -2,5 +2,5 @@ version: 0.1
 
 endpoints:
   - name: Trip Planner API server endpoints
-    port: 3001
+    port: 8080
     type: REST
