@@ -1,0 +1,38 @@
+openapi: 3.0.3
+info:
+  title: Trip Planner - REST API
+  description: >-
+    API specification for trip planner API server
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: trip-planner
+    description: Trip planner API
+paths:
+  /books:
+    summary: List all books
+    get:
+      summary: List all books
+      operationId: ListAllBooks
+      tags:
+        - books
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StringArray"
+
+components:
+  schemas:
+    KeyValue:
+      type: object
+      properties:
+        version:
+          type: string
+          example: "1.0.0"
