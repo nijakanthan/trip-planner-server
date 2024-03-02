@@ -29,13 +29,90 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/KeyValue"
+                $ref: "#/components/schemas/Version"
+  /countries:
+    summary: Get list of countries which has data
+    get:
+      summary: Get list of countries which has data
+      operationId: TripPlannerAppCountries
+      tags:
+        - trip-planner
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CountriesObject"
+  /holidays/{country}/{year}:
+    summary: Get list of holidays for given country and year
+    get:
+      summary: Get list of holidays for given country and year
+      operationId: TripPlannerAppHolidaysByCountryAndYear
+      tags:
+        - trip-planner
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                $ref: "#/components/schemas/HolidaysObject"
 
 components:
   schemas:
-    KeyValue:
+    Version:
       type: object
       properties:
         version:
           type: string
-          example: "1.0.0"
+          example: 1.0.0
+    Country:
+      required:
+        - code
+        - name
+      type: object
+      properties:
+        code:
+          type: string
+          example: LK
+        name:
+          type: string
+          example: Sri Lanka
+    CountriesObject:
+      required:
+        - countries
+      type: object
+      properties:
+        countries:
+          type: array
+          items:
+            $ref: "#/components/schemas/Country"
+    Holiday:
+      required:
+        - summary
+        - date
+      type: object
+      properties:
+        summary:
+          type: string
+          example: Full Moon Poya Day
+        date:
+          type: string
+          example: 2024-01-25
+        catagories:
+          type: array
+          items:
+            type: string
+    HolidaysObject:
+      required:
+        - holidays
+      type: object
+      properties:
+        holidays:
+          type: array
+          items:
+            $ref: "#/components/schemas/Holiday"
+
+      
