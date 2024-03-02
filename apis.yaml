@@ -30,6 +30,10 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Version"
+        "404":
+          description: Request URL not found
+        "400":
+          description: Version data not found
   /countries:
     summary: Get list of countries which has data
     get:
@@ -44,11 +48,28 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CountriesObject"
+        "404":
+          description: Request URL not found
+        "400":
+          description: Country data not found
   /holidays/{country}/{year}:
     summary: Get list of holidays for given country and year
     get:
       summary: Get list of holidays for given country and year
       operationId: TripPlannerAppHolidaysByCountryAndYear
+      parameters:
+        - name: country
+          in: path
+          description: Country code
+          required: true
+          schema:
+            type: string
+        - name: year
+          in: path
+          description: Year
+          required: true
+          schema:
+            type: string
       tags:
         - trip-planner
       responses:
@@ -59,6 +80,10 @@ paths:
               schema:
                 type: array
                 $ref: "#/components/schemas/HolidaysObject"
+        "404":
+          description: Request URL not found
+        "400":
+          description: Invalid country code or year
 
 components:
   schemas:
