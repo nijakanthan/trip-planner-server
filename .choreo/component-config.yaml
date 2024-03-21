@@ -14,3 +14,10 @@ outbound:
       to: CONSUMER_SECRET
     - from: TokenURL
       to: TOKEN_URL
+endpoints:
+  - name: Trip Planner API server endpoints
+    port: 8080
+    type: REST
+    networkVisibility: Public
+    context: /api
+    schemaFilePath: apis.yaml
