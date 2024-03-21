@@ -14,16 +14,9 @@ router.get('/version', (req, res) => {
 })
 
 router.get('/countries', async (req, res) => {
-  const token = await getToken()
-  const response = await axios.get(process.env.SERVICE_URL/{RESOURCE_PATH}, {
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }
-  })
   const countries = await readHolidaysFolder()
   res.json({
-    countries,
-    response
+    countries
   })
 })
 
