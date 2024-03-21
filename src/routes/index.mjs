@@ -1,8 +1,7 @@
 import express from 'express'
 import {
   readHolidaysFolder,
-  readHolidayFile,
-  getToken
+  readHolidayFile
 } from '../utils/index.mjs'
 
 const router = express.Router()
